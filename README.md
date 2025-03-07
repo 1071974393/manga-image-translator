@@ -1,4 +1,9 @@
-# Image/Manga Translator
+请将中文 README（README_CN.md）更新为与提供的英文 README (README.md) 内容一致，并保留中文 README 中“在线版”章节和捐赠章节中“爱发电”的链接。
+
+更新后的中文 README 内容如下：
+
+```markdown
+# 漫画图片翻译器
 
 ![Commit activity](https://img.shields.io/github/commit-activity/m/zyddnys/manga-image-translator)
 ![Lines of code](https://img.shields.io/tokei/lines/github/zyddnys/manga-image-translator?label=lines%20of%20code)
@@ -6,59 +11,58 @@
 ![Contributors](https://img.shields.io/github/contributors/zyddnys/manga-image-translator)
 [![Discord](https://img.shields.io/discord/739305951085199490?logo=discord&label=discord&logoColor=white)](https://discord.gg/Ak8APNy4vb)
 
+> 翻译漫画/图片中的文字。\
+> [English](README.md) | [Change Log](CHANGELOG.md) \
+> 欢迎加入我们的 Discord <https://discord.gg/Ak8APNy4vb>
 
-> Translate texts in manga/images.\
-> [中文说明](README_CN.md) | [Change Log](CHANGELOG.md) \
-> Join us on discord <https://discord.gg/Ak8APNy4vb>
+一些漫画/图片可能永远不会被翻译，因此本项目应运而生。
 
-Some manga/images will never be translated, therefore this project is born.
-
-- [Image/Manga Translator](#imagemanga-translator)
-    - [Samples](#samples)
-    - [Online Demo](#online-demo)
-    - [Disclaimer](#disclaimer)
-    - [Installation](#installation)
-        - [Local setup](#local-setup)
+- [漫画图片翻译器](#漫画图片翻译器)
+    - [样例](#样例)
+    - [在线版](#在线版)
+    - [免责声明](#免责声明)
+    - [安装](#安装)
+        - [本地安装](#本地安装)
             - [Pip/venv](#pipvenv)
-            - [Additional instructions for **Windows**](#additional-instructions-for-windows)
+            - [**Windows** 额外说明](#windows-额外说明)
         - [Docker](#docker)
-            - [Hosting the web server](#hosting-the-web-server)
-            - [Using as CLI](#using-as-cli)
-            - [Setting Translation Secrets](#setting-translation-secrets)
-            - [Using with Nvidia GPU](#using-with-nvidia-gpu)
-            - [Building locally](#building-locally)
-    - [Usage](#usage)
-        - [Batch mode (default)](#batch-mode-default)
-        - [Demo mode](#demo-mode)
-        - [Web Mode](#web-mode)
-        - [Api Mode](#api-mode)
-    - [Related Projects](#related-projects)
-    - [Docs](#docs)
-        - [Recommended Modules](#recommended-modules)
-            - [Tips to improve translation quality](#tips-to-improve-translation-quality)
-        - [Options](#options)
-        - [Language Code Reference](#language-code-reference)
-        - [Translators Reference](#translators-reference)
-        - [Config Documentation](#config-file)
-        - [GPT Config Reference](#gpt-config-reference)
-        - [Using Gimp for rendering](#using-gimp-for-rendering)
-        - [Api Documentation](#api-documentation)
-            - [Synchronous mode](#synchronous-mode)
-            - [Asynchronous mode](#asynchronous-mode)
-            - [Manual translation](#manual-translation)
-    - [Next steps](#next-steps)
-    - [Support Us](#support-us)
-        - [Thanks To All Our Contributors :](#thanks-to-all-our-contributors-)
+            - [托管 Web 服务器](#托管-web-服务器)
+            - [用作 CLI](#用作-cli)
+            - [设置翻译密钥](#设置翻译密钥)
+            - [配合 Nvidia GPU 使用](#配合-nvidia-gpu-使用)
+            - [本地构建](#本地构建)
+    - [使用方法](#使用方法)
+        - [批量模式 (默认)](#批量模式-默认)
+        - [Demo 模式](#demo-模式)
+        - [Web 模式](#web-模式)
+        - [Api 模式](#api-模式)
+    - [相关项目](#相关项目)
+    - [文档](#文档)
+        - [推荐模块](#推荐模块)
+            - [提高翻译质量的技巧](#提高翻译质量的技巧)
+        - [选项](#选项)
+        - [语言代码参考](#语言代码参考)
+        - [翻译器参考](#翻译器参考)
+        - [配置文件文档](#配置文件文档)
+        - [GPT 配置参考](#gpt-配置参考)
+        - [使用 Gimp 进行渲染](#使用-gimp-进行渲染)
+        - [Api 文档](#api-文档)
+            - [同步模式](#同步模式)
+            - [异步模式](#异步模式)
+            - [人工翻译](#人工翻译)
+    - [下一步](#下一步)
+    - [支持我们](#支持我们)
+        - [感谢所有贡献者:](#感谢所有贡献者)
 
-## Samples
+## 样例
 
-Please note that the samples may not always be updated, they may not represent the current main branch version.
+请注意，样例可能并非总是更新，可能不代表当前主分支版本的效果。
 
 <table>
   <thead>
     <tr>
-      <th align="center" width="50%">Original</th>
-      <th align="center" width="50%">Translated</th>
+      <th align="center" width="50%">原始图片</th>
+      <th align="center" width="50%">翻译后图片</th>
     </tr>
   </thead>
   <tbody>
@@ -131,188 +135,185 @@ Please note that the samples may not always be updated, they may not represent t
   </tbody>
 </table>
 
-## Online Demo
+## 在线版
 
-Official Demo (by zyddnys): <https://touhou.ai/imgtrans/>\
-Browser Userscript (by QiroNT): <https://greasyfork.org/scripts/437569>
+官方演示站 (由 zyddnys 维护)： <https://touhou.ai/imgtrans/>\
+浏览器 Userscript (由 QiroNT 维护): <https://greasyfork.org/scripts/437569>
 
-- Note this may not work sometimes due to stupid google gcp kept restarting my instance.
-  In that case you can wait for me to restart the service, which may take up to 24 hrs.
-- Note this online demo is using the current main branch version.
+- 注意，由于 Google GCP 经常重启我的实例，在线演示站点有时可能无法访问。
+  在这种情况下，您可以等待我重启服务，这可能需要长达 24 小时。
+- 注意，此在线演示站点使用的是当前的 main 分支版本。
 
-## Disclaimer
+## 免责声明
 
-Successor to [MMDOCR-HighPerformance](https://github.com/PatchyVideo/MMDOCR-HighPerformance).\
-**This is a hobby project, you are welcome to contribute!**\
-Currently this only a simple demo, many imperfections exist, we need your support to make this project better!\
-Primarily designed for translating Japanese text, but also supports Chinese, English and Korean.\
-Supports inpainting, text rendering and colorization.
+[MMDOCR-HighPerformance](https://github.com/PatchyVideo/MMDOCR-HighPerformance) 的继任者。\
+**这是一个业余项目，欢迎您贡献代码！**\
+目前这只是一个简单的演示，存在许多不完善之处，我们需要您的支持来使这个项目变得更好！\
+主要为翻译日语文本而设计，但也支持中文、英语和韩语。\
+支持图像修复、文本渲染和着色。
 
-## Installation
+## 安装
 
-### Local setup
+### 本地安装
 
 #### Pip/venv
 
 ```bash
-# First, you need to have Python(>=3.8) installed on your system
-# The latest version often does not work with some pytorch libraries yet
+# 首先，您需要在系统上安装 Python(>=3.8)
+# 最新版本可能尚不兼容某些 pytorch 库
 $ python --version
 Python 3.10.6
 
-# Clone this repo
+# 克隆此仓库
 $ git clone https://github.com/zyddnys/manga-image-translator.git
 
-# Create venv
+# 创建 venv
 $ python -m venv venv
 
-# Activate venv
+# 激活 venv
 $ source venv/bin/activate
 
-# For --use-gpu option go to https://pytorch.org/ and follow
-# pytorch installation instructions. Add `--upgrade --force-reinstall`
-# to the pip command to overwrite the currently installed pytorch version.
+# 对于 --use-gpu 选项，请访问 https://pytorch.org/ 并按照
+# pytorch 安装说明进行操作。添加 `--upgrade --force-reinstall`
+# 到 pip 命令以覆盖当前安装的 pytorch 版本。
 
-# Install the dependencies
+# 安装依赖
 $ pip install -r requirements.txt
 ```
 
-The models will be downloaded into `./models` at runtime.
+模型将在运行时下载到 `./models` 目录中。
 
-#### Additional instructions for **Windows**
+#### **Windows** 额外说明
 
-Before you start the pip install, first install Microsoft C++ Build
-Tools ([Download](https://visualstudio.microsoft.com/vs/),
-[Instructions](https://stackoverflow.com/questions/40504552/how-to-install-visual-c-build-tools))
-as some pip dependencies will not compile without it.
-(See [#114](https://github.com/zyddnys/manga-image-translator/issues/114)).
+在开始 pip 安装之前，请先安装 Microsoft C++ Build Tools ([下载](https://visualstudio.microsoft.com/vs/),
+[说明](https://stackoverflow.com/questions/40504552/how-to-install-visual-c-build-tools))，
+因为某些 pip 依赖项在没有它的情况下将无法编译。
+(参见 [#114](https://github.com/zyddnys/manga-image-translator/issues/114))。
 
-To use [cuda](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64)
-on windows install the correct pytorch version as instructed on <https://pytorch.org/>.
+要在 Windows 上使用 [cuda](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64)，
+请按照 <https://pytorch.org/> 上的说明安装正确的 pytorch 版本。
 
 ### Docker
 
-Requirements:
+要求：
 
-- Docker (version 19.03+ required for CUDA / GPU acceleration)
-- Docker Compose (Optional if you want to use files in the `demo/doc` folder)
-- Nvidia Container Runtime (Optional if you want to use CUDA)
+- Docker (CUDA / GPU 加速需要 19.03+ 版本)
+- Docker Compose (如果您想使用 `demo/doc` 文件夹中的文件，则为可选)
+- Nvidia Container Runtime (如果您想使用 CUDA，则为可选)
 
-This project has docker support under `zyddnys/manga-image-translator:main` image.
-This docker image contains all required dependencies / models for the project.
-It should be noted that this image is fairly large (~ 15GB).
+本项目在 `zyddnys/manga-image-translator:main` 镜像下提供 Docker 支持。
+此 Docker 镜像包含项目所需的所有依赖项/模型。
+需要注意的是，此镜像相当大 (~ 15GB)。
 
-#### Hosting the web server
+#### 托管 Web 服务器
 
-The web server can be hosted using (For CPU)
+可以使用以下命令托管 Web 服务器（CPU）：
 
 ```bash
 docker run -p 5003:5003 -v result:/app/result --ipc=host --rm zyddnys/manga-image-translator:main -l ENG --manga2eng -v --mode web --host=0.0.0.0 --port=5003
 ```
 
-or
+或者
 
 ```bash
 docker-compose -f demo/doc/docker-compose-web-with-cpu.yml up
 ```
 
-depending on which you prefer. The web server should start on port [5003](http://localhost:5003)
-and images should become in the `/result` folder.
+取决于您的偏好。Web 服务器应在端口 [5003](http://localhost:5003) 上启动，
+图像应位于 `/result` 文件夹中。
 
-#### Using as CLI
+#### 用作 CLI
 
-To use docker with the CLI (I.e in batch mode)
+要将 Docker 与 CLI 一起使用（即在批量模式下）：
 
 ```bash
-docker run -v <targetFolder>:/app/<targetFolder> -v <targetFolder>-translated:/app/<targetFolder>-translated  --ipc=host --rm zyddnys/manga-image-translator:main --mode=batch -i=/app/<targetFolder> <cli flags>
+docker run -v <目标文件夹>:/app/<目标文件夹> -v <目标文件夹>-translated:/app/<目标文件夹>-translated  --ipc=host --rm zyddnys/manga-image-translator:main --mode=batch -i=/app/<目标文件夹> <cli flags>
 ```
 
-**Note:** In the event you need to reference files on your host machine
-you will need to mount the associated files as volumes into the `/app` folder inside the container.
-Paths for the CLI will need to be the internal docker path `/app/...` instead of the paths on your host machine
+**注意：** 如果您需要引用主机上的文件，
+则需要将相关文件作为卷挂载到容器内的 `/app` 文件夹中。
+CLI 的路径需要是 Docker 内部路径 `/app/...`，而不是主机上的路径。
 
-#### Setting Translation Secrets
+#### 设置翻译密钥
 
-Some translation services require API keys to function to set these pass them as env vars into the docker container. For
-example:
+某些翻译服务需要 API 密钥才能运行，要设置这些密钥，请将它们作为 env 变量传递到 Docker 容器中。例如：
 
 ```bash
 docker run --env="DEEPL_AUTH_KEY=xxx" --ipc=host --rm zyddnys/manga-image-translator:main <cli flags>
 ```
 
-#### Using with Nvidia GPU
+#### 配合 Nvidia GPU 使用
 
-> To use with a supported GPU please first read the initial `Docker` section. There are some special dependencies you
-> will need to use
+> 要配合受支持的 GPU 使用，请先阅读初始 `Docker` 部分。您将需要使用一些特殊的依赖项
 
-To run the container with the following flags set:
+要使用以下标志运行容器：
 
 ```bash
 docker run ... --gpus=all ... zyddnys/manga-image-translator:main ... --use-gpu
 ```
 
-Or (For the web server + GPU)
+或者（对于 Web 服务器 + GPU）：
 
 ```bash
 docker-compose -f demo/doc/docker-compose-web-with-gpu.yml up
 ```
 
-#### Building locally
+#### 本地构建
 
-To build the docker image locally you can run (You will require make on your machine)
+要在本地构建 Docker 镜像，您可以运行（您的机器需要安装 make）：
 
 ```bash
 make build-image
 ```
 
-Then to test the built image run
+然后要测试构建的镜像，请运行：
 
 ```bash
 make run-web-server
 ```
 
-## Usage
+## 使用方法
 
-### Local mode
+### 本地模式
 
 ```bash
-# replace <path> with the path to the image folder or file.
+# 将 <path> 替换为图像文件夹或文件的路径。
 $ python -m manga_translator local -v -i <path>
-# results can be found under `<path_to_image_folder>-translated`.
+# 结果可以在 `<path_to_image_folder>-translated` 中找到。
 ```
 
-### Web Mode
+### Web 模式
 
 ```bash
-# use `--mode web` to start a web server.
+# 使用 `--mode web` 启动 Web 服务器。
 $ cd server && python main.py --use-gpu
-# the demo will be serving on http://127.0.0.1:5003
+# 演示站点将在 http://127.0.0.1:8000 上提供服务
 ```
 
-## Related Projects
+## 相关项目
 
-GUI implementation: [BallonsTranslator](https://github.com/dmMaze/BallonsTranslator)
+GUI 实现: [BallonsTranslator](https://github.com/dmMaze/BallonsTranslator)
 
-## Docs
+## 文档
 
-### Recommended Modules
+### 推荐模块
 
-Detector:
+检测器:
 
 - ENG: ??
 - JPN: ??
 - CHS: ??
 - KOR: ??
-- Using `{"detector":{"detector": "ctd"}}` can increase the amount of text lines detected
+- 使用 `{"detector":{"detector": "ctd"}}` 可以增加检测到的文本行数
 
 OCR:
 
 - ENG: ??
-- JPN: ??
+- JPN: 48px
 - CHS: ??
 - KOR: 48px
 
-Translator:
+翻译器:
 
 - JPN -> ENG: **Sugoi**
 - CHS -> ENG: ??
@@ -321,21 +322,25 @@ Translator:
 - ENG -> JPN: ??
 - ENG -> CHS: ??
 
-Inpainter: ??
+图像修复器: lama_large
 
-Colorizer: **mc2**
+着色器: **mc2**
 
 <!-- Auto generated start (See devscripts/make_readme.py) -->
 
-#### Tips to improve translation quality
+#### 提高翻译质量的技巧
 
-- Small resolutions can sometimes trip up the detector, which is not so good at picking up irregular text sizes. To
-  circumvent this you can use an upscaler by specifying `--upscale-ratio 2` or any other value
-- If the text being rendered is too small to read specify `--font-size-minimum 30` for instance or use the `--manga2eng`
-  renderer that will try to adapt to detected textbubbles
-- Specify a font with `--font-path fonts/anime_ace_3.ttf` for example
+- 小分辨率有时会使检测器出错，因为它不太擅长识别不规则的文本大小。为了
+  规避这个问题，您可以使用放大器，通过指定 `--upscale-ratio 2` 或任何其他值
+- 如果渲染的文本太小而无法阅读，请指定 `--font-size-minimum 30`，例如，或者使用 `--manga2eng`
+  渲染器，它将尝试适应检测到的文本气泡
+- 使用 `--font-path fonts/anime_ace_3.ttf` 等指定字体
+- 设置 `mask_dilation_offset` 为 20~40。
+- 使用 `lama_large` 作为图像修复器。
+- 增加 `box_threshold` 可以帮助在一定程度上过滤掉 OCR 错误检测产生的乱码。
+- 使用词汇表文件。
 
-### Options
+### 基本选项
 
 ```text
 -h, --help                     show this help message and exit
@@ -346,88 +351,149 @@ Colorizer: **mc2**
 --use-gpu                      Turn on/off gpu (auto switch between mps and cuda)
 --use-gpu-limited              Turn on/off gpu (excluding offline translator)
 --font-path FONT_PATH          Path to font file
---pre-dict PRE_DICT            Path to the pre-translation dictionary file
---post-dict POST_DICT          Path to the post-translation dictionary file
+--pre-dict PRE_DICT            Path to the pre-translation replacement dictionary file
+--post-dict POST_DICT          Path to the post-translation replacement dictionary file
 --kernel-size KERNEL_SIZE      Set the convolution kernel size of the text erasure area to
                                completely clean up text residues
---config-file CONFIG_FILE      path to the config file
---models-ttl MODELS_TTL        How long to keep models in memory in seconds after last use (0 means
-                               forever)
 ```
 
-<!-- Auto generated end -->
+### 附加选项:
 
-### Language Code Reference
+## 批量模式选项
 
-Used by the `translator/language` in the config
+```text
+local                         Run in batch translation mode
+-i, --input INPUT [INPUT ...] Path to an image folder (required)
+-o, --dest DEST               Path to the destination folder for translated images (default: '')
+-f, --format FORMAT           Output format of the translation.  Choices: [list the OUTPUT_FORMATS here, png,webp,jpg,jpeg,xcf,psd,pdf]
+--overwrite                   Overwrite already translated images
+--skip-no-text                Skip image without text (Will not be saved).
+--use-mtpe                    Turn on/off machine translation post editing (MTPE) on the command line (works only on linux right now)
+--save-text                   Save extracted text and translations into a text file.
+--load-text                   Load extracted text and translations from a text file.
+--save-text-file SAVE_TEXT_FILE  Like --save-text but with a specified file path. (default: '')
+--prep-manual                 Prepare for manual typesetting by outputting blank, inpainted images, plus copies of the original for reference
+--save-quality SAVE_QUALITY   Quality of saved JPEG image, range from 0 to 100 with 100 being best (default: 100)
+--config-file CONFIG_FILE     path to the config file (default: None)
+```
+
+## WebSocket 模式选项
+
+```text
+ws                  Run in WebSocket mode
+--host HOST         Host for WebSocket service (default: 127.0.0.1)
+--port PORT         Port for WebSocket service (default: 5003)
+--nonce NONCE       Nonce for securing internal WebSocket communication
+--ws-url WS_URL     Server URL for WebSocket mode (default: ws://localhost:5000)
+--models-ttl MODELS_TTL  How long to keep models in memory in seconds after last use (0 means forever)
+```
+
+## API 模式选项
+
+```text
+shared              Run in API mode
+--host HOST         Host for API service (default: 127.0.0.1)
+--port PORT         Port for API service (default: 5003)
+--nonce NONCE       Nonce for securing internal API server communication
+--report REPORT     reports to server to register instance (default: None)
+--models-ttl MODELS_TTL  models TTL in memory seconds (0 means forever)
+```
+
+## Web 模式选项 (缺少一些基本选项，需要重新添加)
+
+```text
+--host HOST           The host address (default: 127.0.0.1)
+--port PORT           The port number (default: 8000)
+--start-instance      If a translator should be launched automatically
+--nonce NONCE         Nonce for securing internal web server communication
+--models-ttl MODELS_TTL  models TTL in memory in seconds (0 means forever)
+```
+
+## config-help 模式
+
+```bash
+python -m manga_translator config-help
+```
+
+### 语言代码参考
+
+由配置中的 `translator/language` 使用
 
 ```yaml
-CHS: Chinese (Simplified)
-CHT: Chinese (Traditional)
-CSY: Czech
-NLD: Dutch
-ENG: English
-FRA: French
-DEU: German
-HUN: Hungarian
-ITA: Italian
-JPN: Japanese
-KOR: Korean
-PLK: Polish
-PTB: Portuguese (Brazil)
-ROM: Romanian
-RUS: Russian
-ESP: Spanish
-TRK: Turkish
-UKR: Ukrainian
-VIN: Vietnames
-ARA: Arabic
-SRP: Serbian
-HRV: Croatian
-THA: Thai
-IND: Indonesian
-FIL: Filipino (Tagalog)
+CHS: Chinese (Simplified) # 简体中文
+CHT: Chinese (Traditional) # 繁体中文
+CSY: Czech # 捷克语
+NLD: Dutch # 荷兰语
+ENG: English # 英语
+FRA: French # 法语
+DEU: German # 德语
+HUN: Hungarian # 匈牙利语
+ITA: Italian # 意大利语
+JPN: Japanese # 日语
+KOR: Korean # 韩语
+PLK: Polish # 波兰语
+PTB: Portuguese (Brazil) # 葡萄牙语 (巴西)
+ROM: Romanian # 罗马尼亚语
+RUS: Russian # 俄语
+ESP: Spanish # 西班牙语
+TRK: Turkish # 土耳其语
+UKR: Ukrainian # 乌克兰语
+VIN: Vietnames # 越南语
+ARA: Arabic # 阿拉伯语
+SRP: Serbian # 塞尔维亚语
+HRV: Croatian # 克罗地亚语
+THA: Thai # 泰语
+IND: Indonesian # 印度尼西亚语
+FIL: Filipino (Tagalog) # 菲律宾语 (塔加路语)
 ```
 
-### Translators Reference
+### 翻译器参考
 
-| Name          | API Key | Offline | Note                                                     |
-|---------------|---------|---------|----------------------------------------------------------|
-| <s>google</s> |         |         | Disabled temporarily                                     |
-| youdao        | ✔️      |         | Requires `YOUDAO_APP_KEY` and `YOUDAO_SECRET_KEY`        |
-| baidu         | ✔️      |         | Requires `BAIDU_APP_ID` and `BAIDU_SECRET_KEY`           |
-| deepl         | ✔️      |         | Requires `DEEPL_AUTH_KEY`                                |
-| caiyun        | ✔️      |         | Requires `CAIYUN_TOKEN`                                  |
-| gpt3          | ✔️      |         | Implements text-davinci-003. Requires `OPENAI_API_KEY`   |
-| gpt3.5        | ✔️      |         | Implements gpt-3.5-turbo. Requires `OPENAI_API_KEY`      |
-| gpt4          | ✔️      |         | Implements gpt-4. Requires `OPENAI_API_KEY`              |
-| papago        |         |         |                                                          |
-| sakura        |         |         | Requires `SAKURA_API_BASE`                               |
-| custom openai |         |         | Requires  `CUSTOM_OPENAI_API_BASE` `CUSTOM_OPENAI_MODEL` |
-| offline       |         | ✔️      | Chooses most suitable offline translator for language    |
-| sugoi         |         | ✔️      | Sugoi V4.0 Models                                        |
-| m2m100        |         | ✔️      | Supports every language                                  |
-| m2m100_big    |         | ✔️      |                                                          |
-| none          |         | ✔️      | Translate to empty texts                                 |
-| original      |         | ✔️      | Keep original texts                                      |
+| 名称          | API 密钥 | 离线 | 注意事项                                                         |
+|---------------|---------|---------|--------------------------------------------------------------|
+| <s>google</s> |         |         | 暂时禁用                                                         |
+| youdao        | ✔️      |         | 需要 `YOUDAO_APP_KEY` 和 `YOUDAO_SECRET_KEY`                       |
+| baidu         | ✔️      |         | 需要 `BAIDU_APP_ID` 和 `BAIDU_SECRET_KEY`                          |
+| deepl         | ✔️      |         | 需要 `DEEPL_AUTH_KEY`                                        |
+| caiyun        | ✔️      |         | 需要 `CAIYUN_TOKEN`                                            |
+| openai        | ✔️      |         | 实现 Requires `OPENAI_API_KEY`                                 |
+| papago        |         |         |                                                                |
+| sakura        |         |         | 需要 `SAKURA_API_BASE`                                         |
+| custom openai |         |         | 需要 `CUSTOM_OPENAI_API_BASE` `CUSTOM_OPENAI_MODEL`             |
+| offline       |         | ✔️      | 为语言选择最合适的离线翻译器                                                    |
+| sugoi         |         | ✔️      | Sugoi V4.0 模型                                                  |
+| m2m100        |         | ✔️      | 支持所有语言                                                        |
+| m2m100_big    |         | ✔️      |                                                                |
+| none          |         | ✔️      | 翻译成空白文本                                                        |
+| original      |         | ✔️      | 保留原始文本                                                        |
 
-- API Key: Whether the translator requires an API key to be set as environment variable.
-  For this you can create a .env file in the project root directory containing your api keys like so:
+- API 密钥：翻译器是否需要 API 密钥作为环境变量设置。
+  为此，您可以在项目根目录中创建一个 .env 文件，其中包含您的 API 密钥，如下所示：
 
 ```env
 OPENAI_API_KEY=sk-xxxxxxx...
 DEEPL_AUTH_KEY=xxxxxxxx...
 ```
+### 词汇表
+- mit_glossory: 向 AI 模型发送词汇表以指导其翻译可以有效提高翻译质量，例如，确保专有名称和人名的翻译一致。它会自动从词汇表中提取当前翻译的有效条目，因此无需担心词汇表中的大量条目会影响翻译质量。（仅对 openaitranslator 有效，兼容 sakura_dict 和 galtransl_dict。）
 
-- Offline: Whether the translator can be used offline.
+- sakura_dict: sakura 词汇表，仅对 sakuratranslator 有效。没有自动词汇表功能。
 
-- Sugoi is created by mingshiba, please support him in https://www.patreon.com/mingshiba
+```env
+OPENAI_GLOSSARY_PATH=PATH_TO_YOUR_FILE
+SAKURA_DICT_PATH=PATH_TO_YOUR_FILE
+```
 
-### Config file
 
-run `python -m manga_translator config-help >> config-info.json`
+- 离线：翻译器是否可以离线使用。
 
-an example can be found in example/config-example.json
+- Sugoi 由 mingshiba 创建，请在 https://www.patreon.com/mingshiba 上支持他
+
+### 配置文件
+
+运行 `python -m manga_translator config-help >> config-info.json`
+
+示例可以在 example/config-example.json 中找到
 
 ```json
 {
@@ -952,53 +1018,55 @@ an example can be found in example/config-example.json
   "title": "Config",
   "type": "object"
 }
-
 ```
 
-### GPT Config Reference
+### GPT 配置参考
 
-Used by the `--gpt-config` argument.
+由 `--gpt-config` 参数使用。
 
 ```yaml
-# The prompt being feed into GPT before the text to translate.
-# Use {to_lang} to indicate where the target language name should be inserted.
-# Note: ChatGPT models don't use this prompt.
+#  在要翻译的文本之前馈送到 GPT 的提示。
+# 使用 {to_lang} 指示目标语言名称应插入的位置。
+# 注意：ChatGPT 模型不使用此提示。
 prompt_template: >
-  Please help me to translate the following text from a manga to {to_lang}
-  (if it's already in {to_lang} or looks like gibberish you have to output it as it is instead):\n
+  请帮我将以下漫画文本翻译成 {to_lang}
+  (如果它已经是 {to_lang} 或看起来像乱码，你必须按原样输出):\n
 
-# What sampling temperature to use, between 0 and 2.
-# Higher values like 0.8 will make the output more random,
-# while lower values like 0.2 will make it more focused and deterministic.
+# 要使用的采样温度，介于 0 和 2 之间。
+# 较高的值（如 0.8）会使输出更随机，
+# 而较低的值（如 0.2）会使其更集中和确定。
 temperature: 0.5
 
-# An alternative to sampling with temperature, called nucleus sampling,
-# where the model considers the results of the tokens with top_p probability mass.
-# So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+# 一种替代使用温度采样的方案，称为 nucleus sampling，
+# 模型在其中考虑具有 top_p 概率质量的 tokens 的结果。
+# 因此，0.1 意味着只考虑包含前 10% 概率质量的 tokens。
 top_p: 1
 
-# The prompt being feed into ChatGPT before the text to translate.
-# Use {to_lang} to indicate where the target language name should be inserted.
-# Tokens used in this example: 57+
+# 是否在命令行输出中隐藏 _CHAT_SYSTEM_TEMPLATE 和 _CHAT_SAMPLE
+verbose_logging: False
+
+# 在要翻译的文本之前馈送到 ChatGPT 的提示。
+# 使用 {to_lang} 指示目标语言名称应插入的位置。
+# 此示例中使用的 Tokens：57+
 chat_system_template: >
-  You are a professional translation engine, 
-  please translate the story into a colloquial, 
-  elegant and fluent content, 
-  without referencing machine translations. 
-  You must only translate the story, never interpret it.
-  If there is any issue in the text, output it as is.
+  你是一个专业的翻译引擎，
+  请将故事翻译成口语化、
+  优雅流畅的内容，
+  不要参考机器翻译。
+  你必须只翻译故事，绝不解释它。
+  如果文本有任何问题，请按原样输出。
 
-  Translate to {to_lang}.
+  翻译成 {to_lang}。
 
-# Samples being feed into ChatGPT to show an example conversation.
-# In a [prompt, response] format, keyed by the target language name.
+# 馈送到 ChatGPT 的示例，以显示对话示例。
+# 以 [prompt, response] 格式，按目标语言名称键控。
 #
-# Generally, samples should include some examples of translation preferences, and ideally
-# some names of characters it's likely to encounter.
+# 通常，示例应包括一些翻译偏好的示例，理想情况下
+# 一些可能遇到的角色名称。
 #
-# If you'd like to disable this feature, just set this to an empty list.
+# 如果您想禁用此功能，只需将其设置为空列表即可。
 chat_sample:
-  Simplified Chinese: # Tokens used in this example: 88 + 84
+  Simplified Chinese: # 此示例中使用的 Tokens：88 + 84
     - <|1|>恥ずかしい… 目立ちたくない… 私が消えたい…
       <|2|>きみ… 大丈夫⁉
       <|3|>なんだこいつ 空気読めて ないのか…？
@@ -1006,60 +1074,60 @@ chat_sample:
       <|2|>你…没事吧⁉
       <|3|>这家伙怎么看不懂气氛的…？
 
-# Overwrite configs for a specific model.
-# For now the list is: gpt3, gpt35, gpt4
+# 覆盖特定模型的配置。
+# 目前列表为：gpt3、gpt35、gpt4
 gpt35:
   temperature: 0.3
 ```
 
-### Using Gimp for rendering
+### 使用 Gimp 进行渲染
 
-When setting output format to {`xcf`, `psd`, `pdf`} Gimp will be used to generate the file.
+当将输出格式设置为 {`xcf`, `psd`, `pdf`} 时，将使用 Gimp 生成文件。
 
-On Windows this assumes Gimp 2.x to be installed to `C:\Users\<Username>\AppData\Local\Programs\Gimp 2`.
+在 Windows 上，这假定 Gimp 2.x 安装在 `C:\Users\<Username>\AppData\Local\Programs\Gimp 2`。
 
-The resulting `.xcf` file contains the original image as the lowest layer and it has the inpainting as a separate layer.
-The translated textboxes have their own layers with the original text as the layer name for easy access.
+生成的 `.xcf` 文件包含作为最底层layer的原始图像，并且图像修复作为单独的layer。
+翻译后的文本框有自己的layer，原始文本作为layer名称，方便访问。
 
-Limitations:
+限制：
 
-- Gimp will turn text layers to regular images when saving `.psd` files.
-- Rotated text isn't handled well in Gimp. When editing a rotated textbox it'll also show a popup that it was modified
-  by an outside program.
-- Font family is controlled separately, with the `--gimp-font` argument.
+- Gimp 在保存 `.psd` 文件时会将文本layer转换为常规图像。
+- Gimp 对旋转文本的处理效果不佳。编辑旋转文本框时，它还会弹出一个窗口，提示它已被外部程序修改。
+- 字体族由 `--gimp-font` 参数单独控制。
 
-### Api Documentation
+### Api 文档
 
-Read openapi docs: `127.0.0.1:5003/docs`
+阅读 openapi 文档: `127.0.0.1:5003/docs`
 
-## Next steps
+## 下一步
 
-A list of what needs to be done next, you're welcome to contribute.
+以下是下一步需要完成的任务列表，欢迎您贡献代码。
 
-1. Use diffusion model based inpainting to achieve near perfect result, but this could be much slower.
-2. ~~**IMPORTANT!!!HELP NEEDED!!!** The current text rendering engine is barely usable, we need your help to improve
-   text rendering!~~
-3. Text rendering area is determined by detected text lines, not speech bubbles.\
-   This works for images without speech bubbles, but making it impossible to decide where to put translated English
-   text. I have no idea how to solve this.
-4. [Ryota et al.](https://arxiv.org/abs/2012.14271) proposed using multimodal machine translation, maybe we can add ViT
-   features for building custom NMT models.
-5. Make this project works for video(rewrite code in C++ and use GPU/other hardware NN accelerator).\
-   Used for detecting hard subtitles in videos, generating ass file and remove them completely.
-6. ~~Mask refinement based using non deep learning algorithms, I am currently testing out CRF based algorithm.~~
-7. ~~Angled text region merge is not currently supported~~
-8. Create pip repository
+1. 使用基于扩散模型的图像修复模型来实现接近完美的效果，但这可能会慢得多。
+2. ~~**重要！！！需要帮助！！！** 当前的文本渲染引擎几乎不可用，我们需要您的帮助来改进
+   文本渲染！~~
+3. 文本渲染区域由检测到的文本行而不是语音气泡决定。\
+   这适用于没有语音气泡的图像，但使得无法决定将翻译后的英语
+   文本放在哪里。我不知道如何解决这个问题。
+4. [Ryota et al.](https://arxiv.org/abs/2012.14271) 提出使用多模态机器翻译，也许我们可以添加 ViT
+   特征来构建自定义 NMT 模型。
+5. 使本项目适用于视频（用 C++ 重写代码并使用 GPU/其他硬件 NN 加速器）。\
+   用于检测视频中的硬字幕，生成 ass 文件并完全删除它们。
+6. ~~基于非深度学习算法的 Mask 优化，我目前正在测试基于 CRF 的算法。~~
+7. ~~目前不支持倾斜文本区域合并~~
+8. 创建 pip 仓库
 
-## Support Us
+## 支持我们
 
-GPU server is not cheap, please consider to donate to us.
+GPU 服务器价格昂贵，请考虑捐赠以支持我们。
 
 - Ko-fi: <https://ko-fi.com/voilelabs>
 - Patreon: <https://www.patreon.com/voilelabs>
 - 爱发电: <https://afdian.net/@voilelabs>
 
-  ### Thanks To All Our Contributors :
+  ### 感谢所有贡献者:
   <a href="https://github.com/zyddnys/manga-image-translator/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=zyddnys/manga-image-translator" />
 
 </a>
+```
