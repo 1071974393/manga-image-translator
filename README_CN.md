@@ -1,5 +1,3 @@
-# 以下内容由gemini-2.0-pro-exp-0205生成，请仔细甄别
-
 # 漫画/图片翻译器 (中文说明)
 
 > 一键翻译各类图片内文字\
@@ -505,8 +503,7 @@ chat_sample:
 
 阅读 openapi 文档：`127.0.0.1:8000/docs`
 
-html截取
-https://cfbed.1314883.xyz/file/1741386061808_FastAPI - Swagger UI.html
+html截取：<https://cfbed.1314883.xyz/file/1741386061808_FastAPI - Swagger UI.html>
 
 ## 后续计划
 
