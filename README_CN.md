@@ -404,6 +404,63 @@ SAKURA_DICT_PATH=PATH_TO_YOUR_FILE
 
 -   Sugoi 由 mingshiba 创建，请在 <https://www.patreon.com/mingshiba> 支持他
 
+#### 环境变量汇总
+
+```text
+# 百度翻译
+BAIDU_APP_ID=''        # 你的appid
+BAIDU_SECRET_KEY=''    # 你的密钥
+
+# 有道翻译
+YOUDAO_APP_KEY=''       # 应用ID
+YOUDAO_SECRET_KEY=''    # 应用秘钥
+
+# DeepL 翻译
+DEEPL_AUTH_KEY=''       # 你的 AUTH_KEY
+
+# OpenAI
+OPENAI_API_KEY=''      # OpenAI API 密钥
+OPENAI_MODEL=''        # OpenAI 模型 (可选)
+OPENAI_HTTP_PROXY=''    # OpenAI HTTP 代理 (可选, 替代 --proxy)
+OPENAI_GLOSSARY_PATH='./dict/mit_glossory.txt'  # OpenAI 术语表路径 (可选)
+OPENAI_API_BASE='https://api.openai.com/v1'   # OpenAI API 基础地址 (可选, 默认为官方地址)
+
+# Groq
+GROQ_API_KEY='' # Groq API Key
+
+# Sakura
+SAKURA_API_BASE='http://127.0.0.1:8080/v1'  # SAKURA API 地址 (可选)
+SAKURA_VERSION='0.9'                        # SAKURA API 版本 (可选, 0.9 或 0.10)
+SAKURA_DICT_PATH='./dict/sakura_dict.txt'  # SAKURA 术语表路径 (可选)
+
+# 彩云小译
+CAIYUN_TOKEN=''         # 彩云小译 API 访问令牌
+
+# DeepSeek
+DEEPSEEK_API_KEY=''    # DeepSeek API 密钥
+DEEPSEEK_API_BASE='https://api.deepseek.com'  #DeepSeek API Base地址（可选）
+
+# 自定义 OpenAI 兼容 API (例如 Ollama)
+CUSTOM_OPENAI_API_KEY='ollama'             # 自定义 OpenAI API 密钥 (Ollama 不需要，但其他工具可能需要)
+CUSTOM_OPENAI_API_BASE='http://localhost:11434/v1'  # 自定义 OpenAI API 基础地址 (使用 OLLAMA_HOST 环境变量更改绑定 IP 和端口)
+CUSTOM_OPENAI_MODEL=''                       # 自定义 OpenAI 模型 (例如 "qwen2.5:7b"，确保在使用前拉取并运行它)
+CUSTOM_OPENAI_MODEL_CONF=''                     #例如 "qwen2"。
+```
+
+**使用说明：**
+
+1.  **创建 `.env` 文件:** 在项目根目录下创建一个名为 `.env` 的文件。
+2.  **复制粘贴:** 将上面的文本复制到 `.env` 文件中。
+3.  **填写密钥:** 将 `''` 中的内容替换为你自己的 API 密钥、ID 等信息。
+
+**重要提示：**
+
+*   **不要将 `.env` 文件提交到 Git 仓库！**  `.env` 文件包含敏感信息，应该添加到 `.gitignore` 文件中，以防止意外泄露。
+*   确保你的 `.env` 文件位于项目的根目录下，`load_dotenv()` 函数才能正确加载环境变量。
+
+这个汇总后的文本可以直接复制到 `.env` 文件中使用，非常方便。  每个变量都有简短的注释，说明了它的用途。
+
+
 #### 配置文件
 
 运行 `python -m manga_translator config-help >> config-info.json`
